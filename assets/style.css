@@ -1,0 +1,99 @@
+/* ── Reset & Variables ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0A0E1A;
+  --surface: #111827;
+  --border: #1E2D40;
+  --accent: #00D4FF;
+  --accent2: #00FF88;
+  --text: #E2E8F0;
+  --muted: #64748B;
+  --font-mono: 'Courier New', monospace;
+  --font-body: Georgia, serif;
+}
+
+/* ── Base ── */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── Nav ── */
+nav {
+  display: flex;
+  gap: 2rem;
+  padding: 1.2rem 2rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+nav a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+nav a:hover, nav a.active { color: var(--accent); }
+
+/* ── Main ── */
+main { max-width: 860px; margin: 0 auto; padding: 3rem 2rem; }
+
+/* ── Hero ── */
+.hero { padding-top: 5rem; }
+
+.hero h1 {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  color: var(--accent);
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+}
+
+.tagline { font-size: 1.2rem; color: var(--accent2); margin-bottom: 1rem; }
+.desc { color: var(--muted); max-width: 540px; margin-bottom: 2rem; }
+.hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.hero-links a {
+  padding: 0.6rem 1.4rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.hero-links a:hover { background: var(--accent); color: var(--bg); }
+
+/* ── Headings ── */
+h1 { font-family: var(--font-mono); font-size: 2rem; color: var(--accent); margin-bottom: 1rem; }
+h2 { font-family: var(--font-mono); font-size: 1.3rem; color: var(--text); margin: 2rem 0 0.8rem; }
+.subtitle { color: var(--muted); margin-bottom: 2rem; font-style: italic; }
+
+/* ── Project Cards ── */
+#projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.4rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.project-card h3 { font-family: var(--font-mono); color: var(--accent2); margin-bottom: 0.5rem; }
+.project-card p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+.card-meta { display: flex; gap: 1rem; margin-bottom: 0.8rem; font-size: 0.8rem; }
+.lang { color: var(--accent); font-family: var(--font-mono); }
+.stars { color: var(--muted); }
+.project-card a { color: var(--accent); text-decoration: none; font-family: var(--font-mono); font-size: 0.85rem; }
+.project-card a:hover { text-decoration: underline; }
+
+/* ── About Lists ──
