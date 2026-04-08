@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - Wajih Ahmed</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="about.html">About</a>
+  </nav>
+  <main>
+    <h1>Projects</h1>
+    <p class="subtitle">Auto-synced from GitHub. Always up to date.</p>
+    <div id="projects-container">
+      <p class="loading">Loading projects...</p>
+    </div>
+  </main>
+  <script>
+    fetch('https://api.github.com/users/wajihahmed269/repos?sort=updated&per_page=12')
+      .then(res => res.json())
+      .then(repos => {
+        const container = document.getElementById('projects-container');
+        container.innerHTML = '';
+        repos.forEach(repo => {
+          const card = document.createElement('div');
+          card.className = 'project-card';
+          card.innerHTML = `
+            <h3>${repo.name}</h3>
+            <p>${repo.description || 'No description yet.'}</p>
+            <div class="card-meta">
+              <span class="lang">${repo.language || 'N/A'}</span>
+              <span class="stars">★ ${repo.stargazers_count}</span>
+            </div>
+            <a href="${repo.html_url}" target="_blank">View on GitHub →</a>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(() => {
+        document.getElementById('projects-container').innerHTML = 
+          '<p>Failed to load projects.</p>';
+      });
+  </script>
+</body>
+</html>
